@@ -40,7 +40,7 @@ public class Bullet : MonoBehaviour
             Instantiate(hitParticle, hitPos, hitRot);
         }
 
-        if (collision.gameObject.TryGetComponent(out EnemyHealth health))
+        if (collision.gameObject.TryGetComponent(out Health health))
         {
             health.TakeDamhege(bulletDamage);
         }
