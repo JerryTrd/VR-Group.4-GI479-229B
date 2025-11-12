@@ -27,21 +27,31 @@ public class DoorOpeaSensor : MonoBehaviour
     {
         if (!isDoorOpen && Vector3.Distance(transform.position, PlayerTransform.position) < Distance)
         {
-            DoorAnimator.Play("open");
-            isDoorOpen = true;
-
-            //if(OnDoorOpen != nu11)
-            //{
-            //    OnDoorOpen.Invoke();
-            //}
-            OnDoorOpen?.Invoke();
+            Open();
         }
-        else if (isDoorOpen &&Vector3.Distance(transform.position, PlayerTransform.position) > Distance)
+        else if (isDoorOpen && Vector3.Distance(transform.position, PlayerTransform.position) > Distance)
         {
+            Close();
+        }
+    }
+
+    public void Open()
+    {
+        DoorAnimator.Play("Open");
+        isDoorOpen = true;
+
+        //if(OnDoorOpen != nu11)
+        //{
+        //    OnDoorOpen.Invoke();
+        //}
+        OnDoorOpen?.Invoke();
+    }
+    
+    public void Close()
+    {
             DoorAnimator.Play("Close");
             isDoorOpen = false;
             OnDoorClose?.Invoke();
-        }
     }
 
     
